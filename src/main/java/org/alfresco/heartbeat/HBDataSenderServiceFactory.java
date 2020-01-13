@@ -38,7 +38,6 @@ public class HBDataSenderServiceFactory
 {
     private String target;
     private boolean heartbeatEnabled;
-    private String sendingSchedule;
 
     /**
      * Sets the ingestion url for the heartbeat data
@@ -61,16 +60,6 @@ public class HBDataSenderServiceFactory
     }
 
     /**
-     * Sets the cron trigger expression for scheduling the heartbeat job.
-     *
-     * @param sendingSchedule
-     */
-    public void setSendingSchedule(String sendingSchedule)
-    {
-        this.sendingSchedule = sendingSchedule;
-    }
-
-    /**
      * Creates the HBDataSenderService
      *
      * @return
@@ -79,7 +68,6 @@ public class HBDataSenderServiceFactory
     {
         return HBDataSenderServiceBuilder.builder()
                   .withHeartbeatURL(target)
-                  .withSendingSchedule(sendingSchedule)
                   .enable(heartbeatEnabled)
                   .build();
     }
